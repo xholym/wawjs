@@ -10,7 +10,7 @@ if (!file)
 const request = http.request('http://localhost:9999', { method: 'POST' })
 
 request.setHeader('filename', path.basename(file))
-fs.createReadStream(file, { encoding:'utf-8' }).pipe(request, console.error)
+fs.createReadStream(file).pipe(request, console.error)
 request.on('response', res => {
     if (res.statusCode !== 200) {
         console.error(`Server returned ${res.statusMessage}`)
