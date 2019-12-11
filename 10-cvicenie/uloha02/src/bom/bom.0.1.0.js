@@ -45,3 +45,28 @@ class AddBom extends Transform {
         this._buff = null;
     }
 }
+
+class RemoveBom extends Transform {
+
+    constructor() {
+        super();
+        this._bomDone = false
+        this._buff = []
+    }
+    _transform(chunk, enc, cb) {
+        if (this._bomDone)
+            return cb(null, chunk)
+
+        this._buff.push(chunk)
+        if (bufLength(this._buff) >= 3)
+            this._pushBuffered()
+
+        cb()
+    }
+    _pushBuffered() {
+        let chunk = Buffer.concat([...this._buff])
+        this.push(hasBom(chunk) ? chunk.slice(3) : chunk)
+        this._bomDone = true
+        this._buff = null
+    }
+}

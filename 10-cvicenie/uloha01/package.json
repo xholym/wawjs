@@ -1,5 +1,5 @@
 {
-  "name": "uloha02",
+  "name": "uloha01",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,9 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/bom/"
+    "test": "mocha test"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
