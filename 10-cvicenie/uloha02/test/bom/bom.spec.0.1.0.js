@@ -4,8 +4,6 @@ const fs = require("fs");
 
 describe("bom.js tests", function () {
 
-    const bomBuffer = Buffer.from([0xEF, 0xBB, 0xBF])
-
     it("should remove bom if in file", function (done) {
 
         let chunks = [];
@@ -30,7 +28,7 @@ describe("bom.js tests", function () {
             });
     });
 
-    it("Should not change file without bom", function (done) {
+    it("Should not (remove bom) change file without bom", function (done) {
 
         let chunks = [];
 
